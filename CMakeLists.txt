@@ -16,6 +16,7 @@ else()
     cmake_path(APPEND TORCS_TEXTURES_DATA_DIR "${TORCS_BASE}" "data" "data" "textures")
     cmake_path(APPEND TORCS_CARS_DATA_DIR "${TORCS_BASE}" "data" "cars" "models")
 endif()
+
 if(NOT (TORCS_PREFIX))
     message(FATAL_ERROR "Installation directory TORCS_PREFIX not defined")
 else()
@@ -37,7 +38,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
-    add_compile_options(-Wall -fno-strict-aliasing -O2 -g)
+    add_compile_options(-Wall -O2 -g -fno-strict-aliasing -fno-omit-frame-pointer)
 endif()
 
 

@@ -1,7 +1,8 @@
-# targets
+# build and link the targets
 add_library(
     ${PROJECT_NAME}
     SHARED
+    "${CMAKE_CURRENT_LIST_DIR}/race_context.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/lib.cpp"
 )
 
@@ -14,6 +15,7 @@ set_target_properties(
 target_include_directories(
     ${PROJECT_NAME}
     PRIVATE
+        "${CMAKE_CURRENT_LIST_DIR}"
         "${TORCS_BASE}"
         "${TORCS_EXPORTS_INCLUDE_DIR}"
         "${TORCS_LIBS_INCLUDE_DIR}"
@@ -44,6 +46,7 @@ target_link_libraries(
     "${AL_UTILITY_TOOLKIT_LIBRARY}"
     "${VORBIS_FILE_LIBRARY}"
 )
+
 
 # install the targets
 cmake_path(APPEND PROJECT_DRIVER_XML "${CMAKE_CURRENT_LIST_DIR}" "${PROJECT_NAME}.xml")
