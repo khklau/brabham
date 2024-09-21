@@ -125,11 +125,16 @@ static void drive(
 
     float steering_adjustment = (car_yaw_relative_angle - middle_offset_to_width_ratio) / car->info.steerLock;
 
-    // acceleration should be inversely proportional to the steering adjustment allowing between 20 to 25%
-    float acceleration = 0.25 - (0.05 * fabs(steering_adjustment));
+    // acceleration should be inversely proportional to the steering adjustment allowing between 30 to 35%
+    float acceleration = 0.35 - (0.05 * fabs(steering_adjustment));
 
-    // braking should be proportional to the steering adjustment allowing between 0 to 5%
-    float braking = 0.05 - (0.05 * fabs(steering_adjustment));
+    // braking should be proportional to the steering adjustment allowing between 0 to 10%
+    // when the steering adjustment needed is more than 10% of full steering lock
+    float braking = 0.0;
+    if (fabs(steering_adjustment) > 0.1)
+    {
+        braking = 0.15 - (0.15 * fabs(steering_adjustment));
+    }
 
     car->ctrl.steer = steering_adjustment;
     car->ctrl.accelCmd = acceleration;
