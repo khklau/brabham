@@ -28,10 +28,10 @@
 #include <windows.h>
 #endif
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <math.h>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <cmath>
 
 
 static void change_track(int index, tTrack* track, void *carHandle, void **carParmHandle, tSituation *s);
@@ -125,9 +125,15 @@ static void drive(
 
     float steering_adjustment = (car_yaw_relative_angle - middle_offset_to_width_ratio) / car->info.steerLock;
 
+    // acceleration should be inversely proportional to the steering adjustment allowing between 20 to 25%
+    float acceleration = 0.25 - (0.05 * fabs(steering_adjustment));
+
+    // braking should be proportional to the steering adjustment allowing between 0 to 5%
+    float braking = 0.05 - (0.05 * fabs(steering_adjustment));
+
     car->ctrl.steer = steering_adjustment;
-    car->ctrl.accelCmd = 0.3;   // 30% acceleration
-    car->ctrl.brakeCmd = 0.0;   // no brakes
+    car->ctrl.accelCmd = acceleration;
+    car->ctrl.brakeCmd = braking;
     car->ctrl.gear = 1;         // drive in 1st gear
     car->ctrl.clutchCmd = 0.0;  // clutch pedal disengaged
 }
