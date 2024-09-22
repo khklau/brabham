@@ -1,16 +1,13 @@
 #include "race_context.hpp"
 
 
-namespace bot {
+namespace torcs {
+namespace brabham {
 
 race_context::race_context():
-    track(nullptr)
+    track(nullptr),
+    state(race_state::PRESTART)
 {}
 
-race_context& current_race()
-{
-    static race_context current;
-    return current;
-}
-
-} // namespace bot
+} // namespace brabham
+} // namespace torcs
