@@ -3,6 +3,7 @@ add_library(
     ${PROJECT_NAME}
     SHARED
     "${CMAKE_CURRENT_LIST_DIR}/action.cpp"
+    "${CMAKE_CURRENT_LIST_DIR}/track.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/driver.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/race_context.cpp"
     "${CMAKE_CURRENT_LIST_DIR}/state.cpp"
