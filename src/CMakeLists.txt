@@ -49,6 +49,8 @@ target_link_libraries(
     "${OPEN_AL_LIBRARY}"
     "${AL_UTILITY_TOOLKIT_LIBRARY}"
     "${VORBIS_FILE_LIBRARY}"
+    "${BINLOG_LIBRARY}"
+    binlog::binlog binlog::headers
 )
 
 

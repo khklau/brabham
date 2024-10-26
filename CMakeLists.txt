@@ -5,6 +5,7 @@ project(
     VERSION 0.1.0
 )
 
+
 # check mandatory configuration
 if(NOT (TORCS_BASE))
     message(FATAL_ERROR "Base source directory TORCS_BASE not defined")
@@ -30,6 +31,7 @@ endif()
 find_library(OPEN_AL_LIBRARY NAMES openal)
 find_library(AL_UTILITY_TOOLKIT_LIBRARY NAMES alut)
 find_library(VORBIS_FILE_LIBRARY NAMES vorbisfile)
+find_package(binlog CONFIG REQUIRED)
 
 
 # specify compiler features for all targets

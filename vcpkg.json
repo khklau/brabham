@@ -1,0 +1,8 @@
+{
+  "dependencies": [
+    {
+      "name": "binlog",
+      "version>=": "2021-04-16"
+    }
+  ]
+}
